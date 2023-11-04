@@ -1,19 +1,23 @@
-const { timeStamp } = require("console");
-const http = require("http");
+const express = require("express");
 
-function handleRequest(request, response) {
-  if (request.url === "/currenttime") {
-    response.statusCode = 200;
-    response.end("<h1>" + new Date().toISOString() + "<h1>");
-  } else if (request.url === "/") {
-    response.statusCode = 200;
-    response.end("<h1>Hello, world!<h1>");
-  } else {
-    response.statusCode = 404;
-    response.end("<h1>404 Not Found<h1>");
-  }
-}
+const app = express();
 
-const server = http.createServer(handleRequest);
+app.use(express.urlencoded({extended: false}));
 
-server.listen(3000);
+app.get("/currenttime", (req, res) => {
+  res.send("<h1>" + new Date().toISOString() + "<h1>");
+});
+
+app.get("/", (req, res) => {
+  res.send(
+    "<form action='/store-user' method='POST'> <label> Your Name </label><input type='text' name='username'><button>submit</button></form>"
+  );
+});
+
+app.post("/store-user", (req, res) => {
+  const username = req.body.username;
+  console.log(username);
+  res.send("<h1>Username stored!</h1>");
+});
+
+app.listen(3000);
