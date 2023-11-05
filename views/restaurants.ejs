@@ -16,19 +16,7 @@
       <p>We found <%= restaurants.length %> restaurant</p>
       <ul id="restaurants-list">
         <% for(const restaurant of restaurants) { %>
-        <li class="restaurant-item">
-          <article>
-            <h2><%= restaurant.name %></h2>
-            <div class="restaurant-meta">
-              <p><%= restaurant.cuisine %></p>
-              <p><%= restaurant.address %></p>
-            </div>
-            <p><%= restaurant.description %></p>
-            <div class="restaurant-actions">
-              <a href="<%= restaurant.website %>">Go to Website!</a>
-            </div>
-          </article>
-        </li>
+          <%- include("includes/restaurant-item", {restaurant: restaurant}) %>
         <% } %>
       </ul>
       <% } %>
