@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "name": "malaki",
+    "address": "nablus",
+    "cuisine": "broast",
+    "website": "https://github.com/motazhaj",
+    "description": "good shit"
+  },
+  {
+    "name": "broast house",
+    "address": "beir zeit",
+    "cuisine": "broast",
+    "website": "https://broasthouse.com",
+    "description": "its very good"
+  }
+]

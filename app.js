@@ -16,7 +16,9 @@ app.get("/", (req, res) => {
 });
 
 app.get("/restaurants", (req, res) => {
-  res.render("restaurants");
+  const filePath = path.join(__dirname, "data", "restaurants.json");
+  const restaurantsData = JSON.parse(fs.readFileSync(filePath));
+  res.render("restaurants", {restaurants: restaurantsData});
 });
 
 app.get("/recommend", (req, res) => {
