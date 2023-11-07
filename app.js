@@ -28,17 +28,16 @@ app.get("/restaurants/:id", (req, res) => {
   const filePath = path.join(__dirname, "data", "restaurants.json");
   const restaurantsData = JSON.parse(fs.readFileSync(filePath));
 
-  let restaurant;
-
-  for (const restaurantData of restaurantsData) {
-    if (restaurantData.id === restaurantId) {
-      restaurant = restaurantData;
+  for (const restaurant of restaurantsData) {
+    if (restaurant.id === restaurantId) {
+      return res.render("restaurant-detail", {
+        restaurant: restaurant,
+      });
     }
   }
-  res.render("restaurant-detail", {
-    rid: restaurantId,
-    restaurant: restaurant,
-  });
+  res.send(
+    "<h1>Error 404 Restaurant does not exist or No longer available</h1>"
+  );
 });
 
 app.get("/recommend", (req, res) => {
