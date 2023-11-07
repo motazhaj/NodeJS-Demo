@@ -4,6 +4,8 @@ const path = require("path");
 const express = require("express");
 const uuid = require("uuid");
 
+const resData = require("./utility/restaurant-data");
+
 const app = express();
 
 app.set("views", path.join(__dirname, "views"));
@@ -17,16 +19,14 @@ app.get("/", (req, res) => {
 });
 
 app.get("/restaurants", (req, res) => {
-  const filePath = path.join(__dirname, "data", "restaurants.json");
-  const restaurantsData = JSON.parse(fs.readFileSync(filePath));
+  const restaurantsData = resData.getStoredRestaurant();
   res.render("restaurants", { restaurants: restaurantsData });
 });
 
 app.get("/restaurants/:id", (req, res) => {
   const restaurantId = req.params.id;
 
-  const filePath = path.join(__dirname, "data", "restaurants.json");
-  const restaurantsData = JSON.parse(fs.readFileSync(filePath));
+  const restaurantsData = resData.getStoredRestaurant();
 
   for (const restaurant of restaurantsData) {
     if (restaurant.id === restaurantId) {
@@ -45,11 +45,11 @@ app.get("/recommend", (req, res) => {
 app.post("/recommend", (req, res) => {
   const restaurant = req.body;
   restaurant.id = uuid.v4();
-  const filePath = path.join(__dirname, "data", "restaurants.json");
-  const restaurantsData = JSON.parse(fs.readFileSync(filePath));
+  const restaurantsData = resData.getStoredRestaurant();
 
   restaurantsData.push(restaurant);
-  fs.writeFileSync(filePath, JSON.stringify(restaurantsData));
+
+  resData.saveRestaurants(restaurantsData);
 
   res.redirect("/confirm");
 });
