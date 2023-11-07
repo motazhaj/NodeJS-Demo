@@ -132,6 +132,21 @@ main p {
   color: rgb(86, 224, 255);
 }
 
+#def-button {
+  padding: 0.5rem 1.5rem;
+  font-size: 1.5rem;
+  background-color: rgb(86, 224, 255);
+  border-radius: 4px;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  transition: .2s;
+}
+#def-button:hover {
+  background-color: rgb(213, 245, 252);
+  scale: 1.1;
+  transition: .2s;
+}
+
 @media (min-width: 60rem) {
   #main-header {
     padding: 0 5%;

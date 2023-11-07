@@ -30,5 +30,13 @@
     "website": "https://website.com",
     "description": "description",
     "id": "f2d5f601-eb1a-43b3-b41d-392e9beb358c"
+  },
+  {
+    "name": "Falafel Hut",
+    "address": "Rafidya, Nablus, Palestine",
+    "cuisine": "Falafel",
+    "website": "https://falafel-hut.com",
+    "description": "One of the best falafel places in the country",
+    "id": "aa99add8-d5bc-40f1-8e71-e312639f827b"
   }
 ]
