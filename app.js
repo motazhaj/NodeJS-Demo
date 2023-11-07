@@ -35,9 +35,7 @@ app.get("/restaurants/:id", (req, res) => {
       });
     }
   }
-  res.send(
-    "<h1>Error 404 Restaurant does not exist or No longer available</h1>"
-  );
+  res.render("404");
 });
 
 app.get("/recommend", (req, res) => {
@@ -62,6 +60,10 @@ app.get("/about", (req, res) => {
 
 app.get("/confirm", (req, res) => {
   res.render("confirm");
+});
+
+app.use((req, res) => {
+  res.render("404");
 });
 
 app.listen(3000);

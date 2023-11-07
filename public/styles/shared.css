@@ -132,7 +132,7 @@ main p {
   color: rgb(86, 224, 255);
 }
 
-#def-button {
+.def-button {
   padding: 0.5rem 1.5rem;
   font-size: 1.5rem;
   background-color: rgb(86, 224, 255);
@@ -141,7 +141,7 @@ main p {
   text-decoration: none;
   transition: .2s;
 }
-#def-button:hover {
+.def-button:hover {
   background-color: rgb(213, 245, 252);
   scale: 1.1;
   transition: .2s;
