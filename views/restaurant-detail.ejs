@@ -8,10 +8,12 @@
   <body>
     <%- include('includes/header') %>
     <main>
-      <h1>Title of Restaurant <%= rid %></h1>
-      <p>Cuisine | Address</p>
-      <p>description</p>
-      <p><a href="">Go to website</a></p>
+      <h1><%= restaurant.name  %></h1>
+      <p>This restaurant serves: <%= restaurant.cuisine  %></p>
+      <p>This restaurant is located in: <%= restaurant.address  %></p>
+      
+      <p><%= restaurant.description  %></p>
+      <p><a href="<%= restaurant.website  %>">Go to website</a></p>
     </main>
   </body>
 </html>
