@@ -19,8 +19,32 @@ app.get("/", (req, res) => {
 });
 
 app.get("/restaurants", (req, res) => {
+  let order = req.query.order;
+  let nextOrder = "desc";
+
+  if (order !== "asc" && order !== "desc") {
+    order = "asc";
+  }
+
+  if (order === "desc") {
+    nextOrder = "asc";
+  }
+
   const restaurantsData = resData.getStoredRestaurant();
-  res.render("restaurants", { restaurants: restaurantsData });
+  restaurantsData.sort((a, b) => {
+    if (
+      (order === "asc" && a.name.toLowerCase() > b.name.toLowerCase()) ||
+      (order === "desc" && b.name.toLowerCase() > a.name.toLowerCase())
+    ) {
+      return 1;
+    }
+    return -1;
+  });
+
+  res.render("restaurants", {
+    restaurants: restaurantsData,
+    nextOrder: nextOrder,
+  });
 });
 
 app.get("/restaurants/:id", (req, res) => {
